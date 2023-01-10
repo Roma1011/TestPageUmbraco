@@ -17,14 +17,14 @@ using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 using Umbraco.ModelsBuilder.Embedded;
 
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "e07d990d265932ff")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.7")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "4a1531f56a6fb1aa")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.10")]
 
 namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Home</summary>
 	[PublishedModel("home")]
-	public partial class Home : PublishedContentModel
+	public partial class Home : PublishedContentModel, IPageContent
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -48,16 +48,16 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// HelloWorldText: this is the message to display on the hompage
+		/// Page Content Text: This will be text message
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
-		[ImplementPropertyType("helloWorldText")]
-		public virtual string HelloWorldText => this.Value<string>("helloWorldText");
+		[ImplementPropertyType("pageContentText")]
+		public virtual string PageContentText => global::Umbraco.Web.PublishedModels.PageContent.GetPageContentText(this);
 	}
 
 	/// <summary>About</summary>
 	[PublishedModel("about")]
-	public partial class About : PublishedContentModel
+	public partial class About : PublishedContentModel, IPageContent
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -81,11 +81,57 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// MessageText: the message text on about page
+		/// Page Content Text: This will be text message
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
-		[ImplementPropertyType("messageText")]
-		public virtual string MessageText => this.Value<string>("messageText");
+		[ImplementPropertyType("pageContentText")]
+		public virtual string PageContentText => global::Umbraco.Web.PublishedModels.PageContent.GetPageContentText(this);
+	}
+
+	// Mixin Content Type with alias "pageContent"
+	/// <summary>Page Content</summary>
+	public partial interface IPageContent : IPublishedElement
+	{
+		/// <summary>Page Content Text</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		string PageContentText { get; }
+	}
+
+	/// <summary>Page Content</summary>
+	[PublishedModel("pageContent")]
+	public partial class PageContent : PublishedElementModel, IPageContent
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public new const string ModelTypeAlias = "pageContent";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<PageContent, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public PageContent(IPublishedElement content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Page Content Text: This will be text message
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("pageContentText")]
+		public virtual string PageContentText => GetPageContentText(this);
+
+		/// <summary>Static getter for Page Content Text</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public static string GetPageContentText(IPageContent that) => that.Value<string>("pageContentText");
 	}
 
 	/// <summary>Folder</summary>
