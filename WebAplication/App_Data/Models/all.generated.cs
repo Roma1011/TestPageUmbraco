@@ -6,7 +6,7 @@ using  Umbraco.Core.Models;
 using  Umbraco.Core.Models.PublishedContent;
 using  Umbraco.Web;
 using  Umbraco.ModelsBuilder.Embedded;
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "f2c1c6d9a138492e")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "10a0743ed6c55bc3")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -38,7 +38,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Home</summary>
 	[PublishedModel("home")]
-	public partial class Home : PublishedContentModel, IPageContent
+	public partial class Home : PublishedContentModel, ICallToAction, IHeaderProperties, IPageContent
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -60,6 +60,48 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Call To Action Link: Link to something of somewhere
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("callToActionLink")]
+		public virtual global::Umbraco.Web.Models.Link CallToActionLink => global::Umbraco.Web.PublishedModels.CallToAction.GetCallToActionLink(this);
+
+		///<summary>
+		/// Call To Action Text: some explanatory text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("callToActionText")]
+		public virtual string CallToActionText => global::Umbraco.Web.PublishedModels.CallToAction.GetCallToActionText(this);
+
+		///<summary>
+		/// Call To Action Title: this will be the title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("callToActionTitle")]
+		public virtual string CallToActionTitle => global::Umbraco.Web.PublishedModels.CallToAction.GetCallToActionTitle(this);
+
+		///<summary>
+		/// Main Image: This is Page main photo
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("mainImage")]
+		public virtual global::Umbraco.Core.Models.MediaWithCrops MainImage => global::Umbraco.Web.PublishedModels.HeaderProperties.GetMainImage(this);
+
+		///<summary>
+		/// SubTitle: This is page SubTitle
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("subTitle")]
+		public virtual string SubTitle => global::Umbraco.Web.PublishedModels.HeaderProperties.GetSubTitle(this);
+
+		///<summary>
+		/// Title: The page Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("title")]
+		public virtual string Title => global::Umbraco.Web.PublishedModels.HeaderProperties.GetTitle(this);
 
 		///<summary>
 		/// Page Content Text: This will be text message
@@ -186,6 +228,158 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
 		[ImplementPropertyType("testMode")]
 		public virtual bool TestMode => this.Value<bool>("testMode");
+	}
+
+	// Mixin Content Type with alias "callToAction"
+	/// <summary>Call to Action</summary>
+	public partial interface ICallToAction : IPublishedContent
+	{
+		/// <summary>Call To Action Link</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		global::Umbraco.Web.Models.Link CallToActionLink { get; }
+
+		/// <summary>Call To Action Text</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		string CallToActionText { get; }
+
+		/// <summary>Call To Action Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		string CallToActionTitle { get; }
+	}
+
+	/// <summary>Call to Action</summary>
+	[PublishedModel("callToAction")]
+	public partial class CallToAction : PublishedContentModel, ICallToAction
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public new const string ModelTypeAlias = "callToAction";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<CallToAction, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public CallToAction(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Call To Action Link: Link to something of somewhere
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("callToActionLink")]
+		public virtual global::Umbraco.Web.Models.Link CallToActionLink => GetCallToActionLink(this);
+
+		/// <summary>Static getter for Call To Action Link</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public static global::Umbraco.Web.Models.Link GetCallToActionLink(ICallToAction that) => that.Value<global::Umbraco.Web.Models.Link>("callToActionLink");
+
+		///<summary>
+		/// Call To Action Text: some explanatory text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("callToActionText")]
+		public virtual string CallToActionText => GetCallToActionText(this);
+
+		/// <summary>Static getter for Call To Action Text</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public static string GetCallToActionText(ICallToAction that) => that.Value<string>("callToActionText");
+
+		///<summary>
+		/// Call To Action Title: this will be the title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("callToActionTitle")]
+		public virtual string CallToActionTitle => GetCallToActionTitle(this);
+
+		/// <summary>Static getter for Call To Action Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public static string GetCallToActionTitle(ICallToAction that) => that.Value<string>("callToActionTitle");
+	}
+
+	// Mixin Content Type with alias "headerProperties"
+	/// <summary>Header Properties</summary>
+	public partial interface IHeaderProperties : IPublishedElement
+	{
+		/// <summary>Main Image</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		global::Umbraco.Core.Models.MediaWithCrops MainImage { get; }
+
+		/// <summary>SubTitle</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		string SubTitle { get; }
+
+		/// <summary>Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		string Title { get; }
+	}
+
+	/// <summary>Header Properties</summary>
+	[PublishedModel("headerProperties")]
+	public partial class HeaderProperties : PublishedElementModel, IHeaderProperties
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public new const string ModelTypeAlias = "headerProperties";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<HeaderProperties, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public HeaderProperties(IPublishedElement content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Main Image: This is Page main photo
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("mainImage")]
+		public virtual global::Umbraco.Core.Models.MediaWithCrops MainImage => GetMainImage(this);
+
+		/// <summary>Static getter for Main Image</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public static global::Umbraco.Core.Models.MediaWithCrops GetMainImage(IHeaderProperties that) => that.Value<global::Umbraco.Core.Models.MediaWithCrops>("mainImage");
+
+		///<summary>
+		/// SubTitle: This is page SubTitle
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("subTitle")]
+		public virtual string SubTitle => GetSubTitle(this);
+
+		/// <summary>Static getter for SubTitle</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public static string GetSubTitle(IHeaderProperties that) => that.Value<string>("subTitle");
+
+		///<summary>
+		/// Title: The page Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		[ImplementPropertyType("title")]
+		public virtual string Title => GetTitle(this);
+
+		/// <summary>Static getter for Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.5")]
+		public static string GetTitle(IHeaderProperties that) => that.Value<string>("title");
 	}
 
 	/// <summary>Folder</summary>

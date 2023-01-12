@@ -4,34 +4,45 @@
 	Layout = "Main.cshtml";
 }
 <style>
-    .home-hero{
-        background:no-repeat center center;
-        background-attachment:scroll;
-        position:relative;
-        background-size:cover;
-        color:white;
-    }
-    .home-hero > .overlay{
-     position: absolute; /* Sit on top of the page content */
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0,0,0,0.3); /* Black background with opacity */
-      z-index: 2; /
-    }
-    .home-hero > inner{
-        position:relative;
-        z-index:2;
-    }
+		.home-hero {
+			background: no-repeat center center;
+			background-attachment: scroll;
+			position: relative;
+			background-size: cover;
+			height:400px;
+			
+		}
+
+		.home-hero > .overlay {
+			position: absolute; /* Sit on top of the page content */
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0,0,0,0.3); /* Black background with opacity */
+			z-index: 2;
+		}
+
+		.home-hero > inner {
+			position: relative;
+			z-index: 2;
+		}
+		.display-4{
+			color:wheat;
+		}
+		.lead
+		{
+			color:white;
+		}
 </style>
-<div class="jumbotron jumbotron-fluid home-hero"style="background-image:url('/image/main.jpg')">
-    <div class="overlay"></div>
-        <div class="inner">
-          <div class="container">
-            <h1 class="display-4">Fluid jumbotron</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-          </div>
-        </div>
+<div class="jumbotron jumbotron-fluid home-hero" style="background-image: url(@Model.MainImage.Url())">
+	<div class="overlay"></div>
+	<div class="inner">
+		<div class="container">
+			<h1 class="display-4">@Model.Title</h1>
+			<p class="lead">@Model.SubTitle</p>
+		</div>
+	</div>
 </div>
-    <h1>@Model.Value("pageContentText")</h1>    
+@Html.Partial("PageSections/PageSettings act/Call To Action")
+<h1>@Model.Value("pageContentText")</h1>
